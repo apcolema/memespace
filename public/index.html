@@ -2,7 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<base href=""/>-->
+
+    <link rel="icon" type="image/png" href="assets/img/logo_icon.png">
+
+    <!--Link to the CSS for the styling-->
+    <link rel="stylesheet" type="text/css" href="styling/meme.css"/>
+
     <title>Welcome to MemeSpace</title>
 
     <!-- update the version number as needed -->
@@ -12,32 +18,170 @@
     <script defer src="/__/firebase/5.5.9/firebase-database.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <!-- initialize custom js scripts -->
+    <script type="text/javascript" src="./components/meme.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+
+    <style>
+
+      @font-face {
+        font-family: "Ubuntu";
+        src: url("assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
+      }
+
+      /* Central content container */
+
+      .center_content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 100vh;
+        width: 40vw;
+      }
+
+      /* Logo and Title */
+
+      .banner {
+        height: 200px;
+        width: 100%;
+        text-align: center;
+        margin-top: 20%;
+        margin-bottom: 20%;
+      }
+
+      .banner h1 {
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 20%;
+        margin: auto;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 3.5em;
+      }
+
+      .banner img {
+        position: relative;
+        top: 10%;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      .banner hr {
+        position: relative;
+        top: 25%;
+        border-bottom-color: #0099CC;
+        border-bottom-width: 2px;
+      }
+
+      /* Username, Password, Buttons */
+
+      .page_content {
+        width: 100%;
+        height: 300px;
+        margin-top: 0;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+      }
+
+      .page_content p {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+      }
+
+      .page_content input[type=text],
+      .page_content input[type=password] {
+        color: black;
+        background: transparent;
+        border: 2px solid black;
+        border-radius: 6px;
+        width: 40%;
+        margin-top: 0;
+      }
+
+      .page_content input[type=button] {
+        color: black;
+        background: transparent;
+        border: 2px solid #0099CC;
+        border-radius: 6px;
+        width: 20%;
+        margin-top: 5%;
+      }
+
+      .page_content input[type=button]:hover {
+        color: white;
+        background: #0099CC;
+      }
+
+      /* Preview Memes */
+
+      .preview_meme {
+        height: 40vh;
+        width: 40vh;
+      }
+
+      .top_left {
+        position: absolute;
+        top: 5vh;
+        left: 5vw;
+      }
+
+      .top_right {
+        position: absolute;
+        top: 5vh;
+        right: 5vw;
+      }
+
+      .bottom_right {
+        position: absolute;
+        bottom: 5vh;
+        right: 5vw;
+      }
+
+      .bottom_left {
+        position: absolute;
+        bottom: 5vh;
+        left: 5vw;
+      }
+
+    </style>
 
   </head>
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <div class="center_content">
+      <div class="banner">
+        <img src="assets/img/logo.png" alt="MemeSpace Logo"/>
+        <div style="display: none">
+          Icon made by <a href="https://www.flaticon.com/authors/smashicons"title="Smashicons">Smashicons</a> 
+          from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> 
+          is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        </div>
+        <h1>MEMESPACE</h1>
+        <hr/>
+      </div>
+
+      <div class="page_content">
+        <p>Username</p>
+        <input class="login_input_text" type="text" name="username" placeholder="Username">
+        <p>Password</p>
+        <input class="login_input_text" type="password" name="password" placeholder="Password">
+        <br/>
+        <input type="button" value="Login">
+        <input type="button" value="Create Account">
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        
-        //TODO initAuth(firebase.auth());
-        //TODO initDatabase(firebase.database())
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+    <div id="top_left_meme" class="preview_meme top_left"></div>
+    <div id="top_right_meme" class="preview_meme top_right"></div>
+    <div id="bottom_right_meme" class="preview_meme bottom_right"></div>
+    <div id="bottom_left_meme" class="preview_meme bottom_left"></div>
+    <script>initialize();</script>
   </body>
+
+
 </html>
