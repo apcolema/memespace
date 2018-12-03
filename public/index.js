@@ -49,7 +49,7 @@ function create_account() {
         return;
     }
 
-    var userCredential = firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
       
@@ -62,17 +62,6 @@ function create_account() {
         }
         console.log(error);
     });
-
-    if (userCredential.user == undefined) {
-        return;
-    } else {
-        /*
-        var user = new User();
-        user.load(userCredential.user);
-        */
-        //TODO redirect to home with user object
-        alert("Headed home");
-    }
 }
 
 function destroy_create_account() {
@@ -117,15 +106,6 @@ function login() {
     var email = document.getElementById('email_input').value;
     var password = document.getElementById('password_input').value;
 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            // User is signed in.
-            alert("signed in");
-        } else {
-            alert("not signed in");
-        }
-    });
-
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -140,3 +120,23 @@ function login() {
         console.log(error);
     });
 }
+
+(() => {
+    window.onload = (() => {
+
+        firebase.auth().signOut().then(function() {
+            //Set up auth change listener to go to Home
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    localStorage.clear();
+                    localStorage.setItem('user', JSON.stringify(user));
+                    window.location.replace("home.html");
+                } else {
+                    //User not signed in
+                    return;
+                }
+            });
+        });
+    });
+})();

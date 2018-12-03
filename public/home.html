@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--<base href=""/>-->
+        <link rel="icon" type="image/png" href="assets/img/logo_icon.png">
+
+        <!--Link to the CSS for the styling-->
+        <link rel="stylesheet" type="text/css" href="styling/meme.css"/>
+
+        <title>MemeSpace</title>
+
+        <script type="text/javascript" src="components/user.js"></script>
+        <script type="text/javascript" src="components/meme.js"></script>
+        <script type="text/javascript" src="home.js"></script>
+
+        <style>
+
+            @font-face {
+                font-family: "Ubuntu";
+                src: url("assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
+            }
+
+            /* Central content container */
+
+            header {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                margin: auto;
+                height: 10vh;
+                width: 100vw;
+            }
+
+            /* Logo and Title */
+
+            .banner {
+                height: 10vh;
+                width: 80vw;
+                text-align: center;
+                margin: auto;
+            }
+
+            .banner h1 {
+                position: relative;
+                left: 0;
+                right: 0;
+                top: 12%;
+                margin: auto;
+                font-family: 'Ubuntu', sans-serif;
+                font-size: 1.5em;
+            }
+
+            .banner img {
+                position: relative;
+                top: 10%;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 3%;
+                height: 40%;
+            }
+
+            .banner hr {
+                position: relative;
+                top: 10%;
+                width: 100%;
+                left: 0;
+                right: 0;
+                border-bottom-color: black;
+                border-bottom-width: 1px;
+            }
+
+            /* User Profile in header */
+            .user_profile_icon {
+                position: absolute;
+                width: 20vh;
+                height: 100%;
+                top: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .user_profile_icon img {
+                position: absolute;
+                height: 40px;
+                width: 40px;
+                top: 20%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition-property: all;
+                transition-duration: 1s;
+            }
+
+            .user_profile_icon img:hover {
+                height: 50px;
+                width: 50px;
+            }
+
+            /* Add Meme Button in header */
+            .add_meme_icon {
+                position: absolute;
+                width: 20vh;
+                height: 100%;
+                top: 0;
+                left: 0;
+                margin: auto;
+            }
+
+            .add_meme_icon img {
+                position: absolute;
+                height: 40px;
+                width: 40px;
+                top: 20%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition-property: all;
+                transition-duration: 1s;
+            }
+
+            .add_meme_icon img:hover {
+                height: 50px;
+                width: 50px;
+            }
+
+            /* Search bar / footer */
+            footer {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                height: 5vh;
+                width: 100vw;
+            }
+
+            footer input[type=text] {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                border: none;
+                border: 1px solid gray;
+                height: 100%;
+                width: 40%;
+                transition-property: all;
+                transition-duration: 1s;
+                border-radius: 10px;
+                padding-left: 10px;
+                font-weight: bold;
+            }
+
+            footer input[type=text]:hover {
+                box-shadow: 0 0 1em #0099CC;
+            }
+
+            footer div {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                height: 100%;
+                width: 40px;
+                background-color: #0099CC;
+                border-radius: 5px;
+            }
+
+            footer img {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                height: 80%;
+                border-radius: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="banner">
+                <img src="assets/img/logo.png" alt="MemeSpace Logo"/>
+                <div style="display: none">
+                  Icon made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> 
+                  from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> 
+                  is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+                </div>
+                <h1>MEMESPACE</h1>
+                <hr/>
+            </div>
+            <div class="add_meme_icon">
+                <img src="assets/img/add_meme_icon.png" alt="">
+            </div>
+            <div class="user_profile_icon">
+                <img src="assets/img/user_profile_icon.png" alt="">
+            </div>
+        </header>
+        <main>
+
+        </main>
+        <footer>
+            <input type="text" name="search_bar" placeholder="Search">
+            
+        </footer>
+    </body>
+</html>
