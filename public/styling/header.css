@@ -1,0 +1,117 @@
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    height: 10vh;
+    width: 100vw;
+    background-color: rgb(33,33,33);
+    box-shadow: 0 0 0.5em rgb(33,33,33);
+}
+
+/* Logo and Title */
+
+.banner {
+    height: 10vh;
+    width: 80vw;
+    text-align: center;
+    margin: auto;
+}
+
+.banner h1 {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 12%;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+    color: white;
+}
+
+.banner img {
+    position: relative;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 3%;
+    height: 40%;
+}
+
+/* User Profile in header */
+.user_profile_icon {
+    position: absolute;
+    width: 20vh;
+    height: 100%;
+    top: 0;
+    right: 0;
+    margin: auto;
+}
+
+.hover_location {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.user_profile_icon img {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.show_hover_line {
+    border-bottom: 2px solid orange;
+}
+
+/* Add Meme Button in header */
+.add_meme_icon {
+    position: absolute;
+    width: 20vh;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: auto;
+}
+
+.add_meme_icon img {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.add_meme_icon img:hover {
+    height: 55px;
+    width: 55px;
+}
+
+.add_meme_line {
+    border-bottom: 1px solid orange;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}

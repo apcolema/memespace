@@ -27,7 +27,5 @@ class Dashboard {
     editMeme(meme) { this.editor.edit(meme); }
     saveMemeEdit() { this.editor.saveEdit(); }
     cancelMemeEdit() { this.editor.cancelEdit(); }
-    removeMeme(meme) {
-        this.memeList.removeFromTable(meme);
-    }
+    removeMeme(meme) { this.memeList.removeFromTable(meme); }
 }
