@@ -1,4 +1,8 @@
 class Meme {
+    load() {
+        console.log("Meme class loaded");
+    }
+
     constructor(img_path="", title="title", ttop="What is my purpose", tbot="To be a sample meme", ttop_y=0, tbot_y=0, editable=false) {
         if(img_path == "") {
             this.img_path = "assets/img/default_meme.jpg";
@@ -15,10 +19,6 @@ class Meme {
 
         //Render the new meme html structure
         this.meme = this.render_meme();
-    }
-
-    load() {
-        console.log("Meme class loaded");
     }
 
     render_meme() {

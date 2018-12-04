@@ -21,6 +21,10 @@
                 src: url("assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
             }
 
+            body {
+                overflow: hidden;
+            }
+
             /* Central content container */
 
             header {
@@ -92,7 +96,7 @@
                 right: 0;
                 margin: auto;
                 transition-property: all;
-                transition-duration: 1s;
+                transition-duration: 0.5s;
             }
 
             .user_profile_icon img:hover {
@@ -120,7 +124,7 @@
                 right: 0;
                 margin: auto;
                 transition-property: all;
-                transition-duration: 1s;
+                transition-duration: 0.5s;
             }
 
             .add_meme_icon img:hover {
@@ -141,6 +145,8 @@
 
             footer input[type=text] {
                 position: absolute;
+                top: 0;
+                bottom: 50%;
                 left: 0;
                 right: 0;
                 margin: auto;
@@ -149,14 +155,14 @@
                 height: 100%;
                 width: 40%;
                 transition-property: all;
-                transition-duration: 1s;
+                transition-duration: 0.5s;
                 border-radius: 10px;
                 padding-left: 10px;
                 font-weight: bold;
             }
 
             footer input[type=text]:hover {
-                box-shadow: 0 0 1em #0099CC;
+                box-shadow: 0 0 0.5em #0099CC;
             }
 
             footer div {
@@ -183,6 +189,34 @@
                 border-radius: 5px;
             }
 
+            /* Center table content styling */
+
+            .meme_list {
+                width: 80vw;
+                height: 75vh;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 15vh;
+                margin: auto;
+                overflow: hidden;
+            }
+
+            table {
+                border: 1px solid black;
+                width: 80vw;
+                height: 75vh;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                margin: auto;
+            }
+
+            td {
+                border: 1px solid black;
+            }
+
         </style>
     </head>
     <body>
@@ -205,7 +239,12 @@
             </div>
         </header>
         <main>
-
+            <div class="meme_list">
+                <table>
+                    <tbody id="meme_list">
+                    </tbody>
+                </table>
+            </div>
         </main>
         <footer>
             <input type="text" name="search_bar" placeholder="Search">
