@@ -4,6 +4,9 @@ class Editor {
     }
 
     constructor(memeList) {
+        
+        this.load();
+        
         this.memeList = memeList;
     }
 

@@ -4,9 +4,19 @@ class User {
     }
 
     constructor(user) {
+
+        this.load();
+
         console.log(user);
 
-        this.uuid = 0;
+        //Set to Guest uuid initially
+        this.uuid = "Bbr3IUUpFJd1MDm9fLTxuaHWHBI3";
+
+        if (user != undefined) {
+            console.log("User is defined");
+            this.uuid = user["uid"];
+        }
+
     }
 
     changePassword(newPass) {

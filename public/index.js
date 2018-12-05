@@ -1,4 +1,5 @@
 function initialize() {
+    /*
     const top_left_meme = new Meme();
     const top_right_meme = new Meme();
     const bottom_right_meme = new Meme();
@@ -8,6 +9,7 @@ function initialize() {
     document.getElementById("top_right_meme").appendChild(top_right_meme.meme);
     document.getElementById("bottom_right_meme").appendChild(bottom_right_meme.meme);
     document.getElementById("bottom_left_meme").appendChild(bottom_left_meme.meme);
+    */
 }
 
 function setup_create_account() {

@@ -13,9 +13,21 @@
 
         <title>MemeSpace</title>
 
-        <script type="text/javascript" src="components/user.js"></script>
+        <!-- update the version number as needed -->
+        <script src="/__/firebase/5.5.9/firebase-app.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script src="/__/firebase/5.5.9/firebase-auth.js"></script>
+        <script src="/__/firebase/5.5.9/firebase-database.js"></script>
+        <!-- initialize the SDK after all desired features are loaded -->
+        <script src="/__/firebase/init.js"></script>
+
         <script type="text/javascript" src="components/meme.js"></script>
-        <script type="text/javascript" src="home.js"></script>
+        <script type="text/javascript" src="components/user.js"></script>
+        <script type="text/javascript" src="layouts/memeList.js"></script>
+        <script type="text/javascript" src="layouts/editor.js"></script>
+        <script type="text/javascript" src="layouts/sidebar.js"></script>
+        <script type="text/javascript" src="layouts/header.js"></script>
+        <script type="text/javascript" src="dashboard/dashboard.js"></script>
 
         <style>
             body {
@@ -30,11 +42,11 @@
                 right: 0;
                 top: 15vh;
                 margin: auto;
-                overflow: hidden;
+                overflow: scroll;
             }
 
             table {
-                border: 1px solid black;
+                border: none;
                 width: 90vw;
                 height: 75vh;
                 position: absolute;
@@ -45,66 +57,21 @@
             }
 
             td {
-                border: 1px solid black;
+                border: none;
+                margin-bottom: 5%;
+                margin-top: 5%;
+                padding: 2%;
+                width: 30%;
+                height: 50%;
             }
+
         </style>
 
         <script>
-            function showSidebar() {
-                document.getElementById('sidebar').setAttribute('style', 'display: inline;');
-                document.getElementById('sidebar_cover').setAttribute('style', 'display: inline;');
-            }
-
-            function hideSidebar() {
-                document.getElementById('sidebar').setAttribute('style', 'display: none;');
-                document.getElementById('sidebar_cover').setAttribute('style', 'display: none;');
-            }
-
-            function growProfileIcon() {
-                document.getElementById("hover_line").classList.add("show_hover_line");
-                document.getElementById("profile_icon").setAttribute("style", "height: 50px; width: 50px;");
-            }
-
-            function shrinkProfileIcon() {
-                document.getElementById("hover_line").classList.remove("show_hover_line");
-                document.getElementById("profile_icon").setAttribute("style", "height: 40px; width: 40px;");
-            }
-
-            function showPasswordChange() {
-                document.getElementById("password_input").setAttribute("style", "display: inline;");
-                document.getElementById("verify_input").setAttribute("style", "display: inline;");
-
-                document.getElementById("change_password_button").value = "Save";
-                document.getElementById("change_password_button").setAttribute("style", "width: 50%;");;
-
-                document.getElementById("cancel_button").setAttribute("style", "display: inline;");
-            }
-
-            function hidePasswordChange() {
-                document.getElementById("password_input").setAttribute("style", "display: none;");
-                document.getElementById("verify_input").setAttribute("style", "display: none;");
-
-                document.getElementById("change_password_button").value = "Change Password";
-                document.getElementById("change_password_button").setAttribute("style", "width: 100%;");
-
-                document.getElementById("cancel_button").setAttribute("style", "display: none;");
-            }
-
-            function verify() {
-                var pass = document.getElementById("password_input");
-                var verify = document.getElementById("verify_input");
-
-                if(verify.value == "") {
-                    verify.setAttribute("style", "background-color: rgba(255, 255, 255, 0.2); display: inline;");
-                }
-                else if(pass.value == verify.value) {
-                    verify.setAttribute("style", "background-color: rgba(51, 204, 51, 0.2); display: inline;");
-                }
-                else {
-                    verify.setAttribute("style", "background-color: rgba(255, 0, 0, 0.2); display: inline;");
-                }
-            }
+            //Create global Dashboard
+            const dashboard = new Dashboard();
         </script>
+
     </head>
     <body>
         <header>
@@ -122,7 +89,8 @@
             </div>
             <div class="add_meme_line"></div>
             <div class="user_profile_icon">
-                <div id="hover_line" class="hover_location" onmouseover="showSidebar(); growProfileIcon();" onmouseout="hideSidebar(); shrinkProfileIcon();">
+                <div id="hover_line" class="hover_location" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
+                    onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();">
                     <img id="profile_icon" src="assets/img/user_profile_icon.png" alt="">
                 </div>
             </div>
@@ -130,18 +98,19 @@
         <main>
             <div class="meme_list">
                 <table>
-                    <tbody id="meme_list">
-                    </tbody>
+                    <tbody id="meme_list"></tbody>
                 </table>
             </div>
-            <div id="sidebar" onmouseover="showSidebar(); growProfileIcon();" onmouseout="hideSidebar(); shrinkProfileIcon();">
+            <div id="sidebar" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
+                onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();">
                 <input id="logout_button" type="button" value="Logout">
-                <input id="change_password_button" type="button" value="Change Password" onclick="showPasswordChange()">
-                <input id="cancel_button" type="button" value="Cancel" onclick="hidePasswordChange()">
+                <input id="change_password_button" type="button" value="Change Password" onclick="dashboard.showPasswordChange()">
+                <input id="cancel_button" type="button" value="Cancel" onclick="dashboard.hidePasswordChange()">
                 <input id="password_input" type="password" name="password" placeholder="Password">
-                <input id="verify_input" type="password" name="verify" placeholder="Verify" oninput="verify()">
+                <input id="verify_input" type="password" name="verify" placeholder="Verify" oninput="dashboard.verify()">
             </div>
-            <div id="sidebar_cover" onmouseover="showSidebar(); growProfileIcon();" onmouseout="hideSidebar(); shrinkProfileIcon();"></div>
+            <div id="sidebar_cover" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
+                onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();"></div>
         </main>
         <footer>
             <input type="text" name="search_bar" placeholder="Search">

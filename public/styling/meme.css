@@ -1,4 +1,7 @@
 .container {
+    left: 0;
+    right: 0;
+    margin: auto;
     background-size: cover;
     width: 20vw;
     height: 30vh;

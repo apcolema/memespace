@@ -4,11 +4,14 @@ class MemeList {
     }
 
     constructor(userMemes) {
+
+        this.load();
+        
         this.table = document.getElementById("meme_list");
         this.userMemes = userMemes;
 
         this.userMemes.forEach((el) => {
-            this.table.appendToTable(el);
+            this.appendToTable(el);
         });
     }
 
@@ -22,11 +25,14 @@ class MemeList {
     }
 
     appendToTable(meme) {
-        if( this._isRowFull(this.table.lastChild) ) {
-            this.table.appendChild(document.createElement("tr"));
+        console.log("Appending a child meme to the table");
+        if( this.table.childNodes.length == 0 || this._isRowFull(this.table.lastChild) ) {
+            var row = document.createElement("tr");
+            this.table.appendChild(row);
         }
+
         var el = document.createElement("td");
-        el.appendChild(meme);
+        el.append(meme.meme);
         this.table.lastChild.appendChild(el);
 
         if( this.userMemes.indexOf(meme) == -1 ) {
