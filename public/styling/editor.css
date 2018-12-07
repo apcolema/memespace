@@ -1,60 +1,146 @@
-#add_edit_modal {
-    display: block;
-    top: 10vh;
-    height: 90vh;
-    width: 100vw;
+#editor {
+    width: 95vw;
+    height: 87vh;
     position: absolute;
-    background: rgba(0, 0, 0, .5);
-    z-index:3;
-    margin:0;
-}
-
-#add_edit_container {
-    margin: 0 auto auto auto;
-    width: 50vw;
-    height: 50vh;
-    background: white;
-    padding: 25px;
-}
-
-#title_input {
-    display: block;
-    width: 80%;
+    left: 0;
+    right: 0;
+    top: 8vh;
+    bottom: 0;
     margin: auto;
-    font-size: 2.5em;
-    margin-bottom: 4vh;
+    background-color: rgba(33,33,33,0.9);
+    z-index: 100;
+    display: none;
 }
 
-#caption_button_container {
-    width:100%;
-    text-align:center;
+#editor > img {
+    height: 70px;
+    width: 70px;
+    transition-property: all;
+    transition-duration: 0.5s;
 }
 
-#up_arrow_top_button {
-    font-size:2em;
-    display:inline-block;
+#editor > img:hover {
+    height: 60px;
+    width: 60px;
 }
-#up_arrow_bottom_button {
-    width: 20px;
-    height: 20px;
-    display:inline-block;
+
+#editor input[type=text] {
+    border: none;
+    border: 1px solid gray;
+    transition-property: all;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 2.0em;
+    font-weight: bold;
+    text-align: center;
 }
-#down_arrow_top_button {
-    font-size:2em;
-    display:inline-block;
+
+#editor input[type=text]:hover {
+    box-shadow: 0 0 0.5em orange;
 }
-#down_arrow_bottom_button {
-    width: 2em;
-    height: 2em;
-    display:inline-block;
+
+#editor_ttop {
+    position: absolute;
+    width: 20%;
+    top: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
-#text_bottom_input {
-    display:inline-block;
-    font-size: 2em;
-    width: 60%;
+
+#editor_tbot {
+    position: absolute;
+    width: 25%;
+    bottom: 9%;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
-#text_top_input{
-    display:inline-block;
-    font-size:2em;
-    width: 60%;
+
+#editor_ttitle {
+    position: absolute;
+    height: 5%;
+    width: 25%;
+    bottom: 1%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#move_up_arrow_ttop {
+    position: absolute;
+    top: 2%;
+    left: 30%;
+    margin: auto;
+}
+
+#move_down_arrow_ttop {
+    position: absolute;
+    top: 2%;
+    right: 30%;
+    margin: auto;
+}
+
+#move_up_arrow_tbot {
+    position: absolute;
+    bottom: 8%;
+    left: 30%;
+    margin: auto;
+}
+#move_down_arrow_tbot {
+    position: absolute;
+    bottom: 8%;
+    right: 30%;
+    margin: auto;
+}
+
+#meme_content {
+    position: absolute;
+    height: 65%;
+    width: 30%;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin: auto;
+    color: white;
+    text-align: center;
+    font-size: 2.0em;
+    font-weight: bold; 
+}
+
+#editor input[type=button] {
+    position: absolute;
+    margin: auto;
+    width: 10%;
+    border: 1px solid orange;
+    background-color: rgb(24,24,24);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    font-size: 2.0em;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+#upload_meme {
+    top: 0;
+    left: 0;
+    height: 33%;
+}
+
+#save_meme {
+    top: 33%;
+    left: 0;
+    height: 33%;
+}
+
+#cancel_meme {
+    top: 66%;
+    left: 0;
+    height: 34%;
+}
+
+#editor input[type=button]:hover {
+    border-left: 20px solid orange;
 }

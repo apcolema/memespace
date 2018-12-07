@@ -69,13 +69,14 @@
             main {
                 padding:0;
             }
-            }
 
         </style>
 
         <script>
+
             //Create global Dashboard
             const dashboard = new Dashboard();
+
         </script>
 
     </head>
@@ -90,13 +91,13 @@
                 </div>
                 <h1>MEMESPACE</h1>
             </div>
-            <div class="add_meme_icon">
+            <div class="add_meme_icon" onclick="dashboard.toggleEditor(); dashboard.editorLoadWithMeme(null);">
                 <img src="assets/img/add_meme_icon.png" alt="">
             </div>
             <div class="add_meme_line"></div>
             <div class="user_profile_icon">
-                <div id="hover_line" class="hover_location" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
-                    onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();">
+                <div id="hover_line" class="hover_location" onclick="dashboard.toggleSidebar()" onmouseover="dashboard.growProfileIcon()"
+                    onmouseout="dashboard.shrinkProfileIcon()">
                     <img id="profile_icon" src="assets/img/user_profile_icon.png" alt="">
                 </div>
             </div>
@@ -107,41 +108,34 @@
                     <tbody id="meme_list"></tbody>
                 </table>
             </div>
-            <div id="sidebar" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
-                onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();">
+            <div id="editor">
+                <img id="move_up_arrow_ttop" src="assets/img/up_arrow.png" alt="" onclick="dashboard.editorShiftUpTtop()">
+                <input id="editor_ttop" type="text" name="ttop" placeholder="Top Text" oninput="dashboard.editorWatchTtop()"/>
+                <img id="move_down_arrow_ttop" src="assets/img/down_arrow.png" alt="" onclick="dashboard.editorShiftDownTtop()">
+
+                <div id="meme_content"></div>
+
+                <img id="move_up_arrow_tbot" src="assets/img/up_arrow.png" alt="" onclick="dashboard.editorShiftUpTbot()">
+                <input id="editor_tbot" type="text" name="tbot" placeholder="Bottom Text" oninput="dashboard.editorWatchTbot()"/>
+                <img id="move_down_arrow_tbot" src="assets/img/down_arrow.png" alt="" onclick="dashboard.editorShiftDownTbot()">
+
+                <input id="editor_ttitle" type="text" name="ttile" placeholder="Meme Title" oninput="dashboard.editorWatchTtitle()"/>
+
+                <input id="upload_meme" type="button" value="Upload" onclick="dashboard.uploadMeme()"/>
+                <input id="save_meme" type="button" value="Save" onclick="dashboard.saveMemeEdit()"/>
+                <input id="cancel_meme" type="button" value="Cancel" onclick="dashboard.toggleEditor()"/>
+            </div>
+            <div id="sidebar" onclick="dashboard.toggleSidebar()" onmouseover="dashboard.growProfileIcon()"
+                onmouseout="dashboard.shrinkProfileIcon()">
                 <input id="logout_button" type="button" value="Logout">
                 <input id="change_password_button" type="button" value="Change Password" onclick="dashboard.showPasswordChange()">
                 <input id="cancel_button" type="button" value="Cancel" onclick="dashboard.hidePasswordChange()">
                 <input id="password_input" type="password" name="password" placeholder="Password">
                 <input id="verify_input" type="password" name="verify" placeholder="Verify" oninput="dashboard.verify()">
             </div>
-            <div id="sidebar_cover" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
-                onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();"></div>
-            <div id="add_edit_modal">
-                <div id="add_edit_container">
-                    <form>
-                        <!-- add mouseover for upload photo -->
-                        <input id="title_input" type="text"/>
-                        <div id="caption_button_container">
-                        <input id="up_arrow_top_button" type="button" value="˄"/>
-                        <input id="text_top_input" type="text"/>
-                        <input id="down_arrow_top_button" type="button" value="˅"/>
-                        </div>
-                        <div>
-                            
-                        </div>
-                        <div id="caption_button_container">
-                        <input id="up_arrow_bottom_button" type="button" />
-                        <input id="text_bottom_input" type="text"/>
-                        <input id="down_arrow_bottom_button" type="button" />
-                        </div>
-                        <input id="save_button" type="button" value="Save" onclick="saveEdit()" />
-                        <input id="cancel_button" type="button" value="Cancel" onclick="cancelEdit()" />
-                    </form>
-                </div>
-            </div>
-            
-        </main>
+            <div id="sidebar_cover" onclick="dashboard.toggleSidebar()" onmouseover="dashboard.growProfileIcon()"
+                onmouseout="dashboard.shrinkProfileIcon()"></div>
+       </main>
         <footer>
             <input type="text" name="search_bar" placeholder="Search">
         </footer>
