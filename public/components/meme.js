@@ -109,7 +109,9 @@ class Meme {
         </div>
 
         */
-
+        var table_data_container = document.createElement("div");
+        table_data_container.setAttribute("class", "table_data_container");
+        
         var container = document.createElement("div");
         container.setAttribute("class", "container");
         container.setAttribute("style", `background-image: url("${this.img_path}");`)
@@ -130,19 +132,24 @@ class Meme {
 
             var image_title = document.createElement("p");
             image_title.appendChild(document.createTextNode(this.title));
-
+            
+            var overlay_container = document.createElement("div");
+            overlay_container.setAttribute("class", "overlay_container");
+            
             var share = document.createElement("img");
             share.setAttribute("type", "png");
             var edit = document.createElement("img");
             edit.setAttribute("type", "png");
             var del = document.createElement("img");
             del.setAttribute("type", "png");
+            var test = document.createElement("span");
+            test.appendChild(document.createTextNode("kitties"));
 
-            image_frame.appendChild(share);
-            image_frame.appendChild(edit);
-            image_frame.appendChild(del);
-
-            //TODO Set on hover listener for meme
+            overlay_container.appendChild(test);
+            overlay_container.appendChild(share);
+            overlay_container.appendChild(edit);
+            overlay_container.appendChild(del);
+            
 
         }
 
@@ -151,11 +158,18 @@ class Meme {
         image_frame.appendChild(text_bottom);
 
         container.appendChild(image_frame);
+        
 
         if(this.editable) {
             container.appendChild(image_title);
         }
+        
+        table_data_container.appendChild(container);
+        
+        if(this.editable){
+            table_data_container.appendChild(overlay_container);
+        }
 
-        return container;
+        return table_data_container;
     }
 }
