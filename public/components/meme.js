@@ -25,6 +25,9 @@ class Meme {
         this.ttop_node = null;
         this.tbot_node = null;
         this.ttitle_node = null;
+        this.ttop_parent = null;
+        this.tbot_parent = null;
+        this.ttitle_parent = null;
 
         //If we know a timestamp then load the meme from the DB
         if(timestamp != 0) {
@@ -126,16 +129,19 @@ class Meme {
         image_frame.setAttribute("class", "image_frame");
 
         var text_top = document.createElement("span");
+        this.ttop_parent = text_top;
         this.ttop_node = document.createTextNode(this.ttop);
         text_top.appendChild(this.ttop_node);
         text_top.setAttribute("class", "ttop");
 
         var text_bottom = document.createElement("span");
+        this.tbot_parent = text_bottom;
         this.tbot_node = document.createTextNode(this.tbot);
         text_bottom.appendChild(this.tbot_node);
         text_bottom.setAttribute("class", "tbot");
 
         var image_title = document.createElement("p");
+        this.ttitle_parent = image_title;
         this.ttitle_node = document.createTextNode(this.title);
         image_title.appendChild(this.ttitle_node);
 

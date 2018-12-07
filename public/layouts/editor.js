@@ -32,6 +32,9 @@ class Editor {
         document.getElementById("editor_tbot").value = this.meme.tbot;
         document.getElementById("editor_ttitle").value = this.meme.title;
 
+        this.meme.ttop_parent.setAttribute("style", "font-size: 1.0em");
+        this.meme.tbot_parent.setAttribute("style", "font-size: 1.0em");
+
     }
 
     toggleEditor() {
@@ -50,11 +53,19 @@ class Editor {
     }
 
     _hide() {
+
+        this.meme.ttop_parent.setAttribute("style", "font-size: 1.0em");
+        this.meme.tbot_parent.setAttribute("style", "font-size: 1.0em");
+
         document.getElementById("meme_content").removeChild(document.getElementById("meme_content").childNodes[0]);
         document.getElementById("editor").setAttribute("style", "display: none");
     }
 
     saveEdit() {
+
+        this.meme.ttop_parent.removeAttribute("style");
+        this.meme.tbot_parent.removeAttribute("style");
+
         this.memeList.appendToTable(this.meme);
         if (this.new_meme) {
             this.meme.push_to_database();
