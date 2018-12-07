@@ -49,15 +49,32 @@ class Dashboard {
         }, this);
     }
 
-    showSidebar() { this.sidebar.show(); }
-    hideSidebar() { this.sidebar.hide(); }
+    toggleSidebar() {
+        if (this.editor.toggle) {
+            this.editor.toggleEditor();
+        }
+        this.sidebar.toggleSidebar(); 
+    }
     showPasswordChange() { this.sidebar.showPasswordChange(); }
     hidePasswordChange() { this.sidebar.hidePasswordChange(); }
     verifyPasswordChange() { this.sidebar.verifyPasswordChange(); }
     growProfileIcon() { this.header.growProfileIcon(); }
     shrinkProfileIcon() { this.header.shrinkProfileIcon(); }
-    editMeme(meme) { this.editor.edit(meme); }
+    toggleEditor() {
+        if (this.sidebar.toggle) {
+            this.sidebar.toggleSidebar();
+        }
+        this.editor.toggleEditor();
+    }
+    editorLoadWithMeme(meme) { this.editorLoadWithMeme(meme); }
     saveMemeEdit() { this.editor.saveEdit(); }
-    cancelMemeEdit() { this.editor.cancelEdit(); }
+    uploadMeme() { this.editor.uploadMeme(); }
+    editorWatchTtop() { this.editor.watch_ttop(); }
+    editorWatchTbot() { this.editor.watch_tbot(); }
+    editorWatchTtitle() { this.editor.watch_ttitle(); }
+    editorShiftUpTtop() { this.editor.shift_up_ttop(); }
+    editorShiftUpTbot() { this.editor.shift_up_tbot(); }
+    editorShiftDownTtop() { this.editor.shift_down_ttop(); }
+    editorShiftDownTbot() { this.editor.shift_down_tbot(); }
     removeMeme(meme) { this.memeList.removeFromTable(meme); }
 }

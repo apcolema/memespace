@@ -6,14 +6,25 @@ class Sidebar {
     constructor(user) {
         this.load(); 
         this.user = user;
+        this.toggle = false;
     }
 
-    show() {
+    toggleSidebar() {
+        if (this.toggle) {
+            this._hide();
+            this.toggle = false;
+        } else {
+            this._show();
+            this.toggle = true;
+        }
+    }
+
+    _show() {
         document.getElementById('sidebar').setAttribute('style', 'display: inline;');
         document.getElementById('sidebar_cover').setAttribute('style', 'display: inline;');
     }
 
-    hide() {
+    _hide() {
         document.getElementById('sidebar').setAttribute('style', 'display: none;');
         document.getElementById('sidebar_cover').setAttribute('style', 'display: none;');
     }
