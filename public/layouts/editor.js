@@ -22,7 +22,7 @@ class Editor {
             this.meme = meme;
             this.new_meme = false;
         } else {
-            this.meme = new Meme("","Title","What is my purpose","To be a sample meme",0,0,true,0,this.uuid,false);
+            this.meme = new Meme("","Title","","",0,0,false,0,this.uuid,false);
             this.new_meme = true;
         }
         
@@ -30,12 +30,7 @@ class Editor {
 
         document.getElementById("editor_ttop").value = this.meme.ttop;
         document.getElementById("editor_tbot").value = this.meme.tbot;
-        var e_ttitle = document.getElementById("editor_ttitle");
-        if (e_ttitle.value == undefined || e_ttitle.value == null) {
-            e_ttitle.value = "Title";
-        } else {
-            e_ttitle.value = this.meme.ttitle;
-        }
+        document.getElementById("editor_ttitle").value = this.meme.title;
 
     }
 
@@ -55,6 +50,7 @@ class Editor {
     }
 
     _hide() {
+        document.getElementById("meme_content").removeChild(document.getElementById("meme_content").childNodes[0]);
         document.getElementById("editor").setAttribute("style", "display: none");
     }
 
@@ -74,15 +70,15 @@ class Editor {
     }
 
     watch_ttop() {
-        this.meme.ttop_node.innerHTML = document.getElementById("editor_ttop").value;
+        this.meme.ttop_node.data = document.getElementById("editor_ttop").value;
     }
 
     watch_tbot() {
-        this.meme.tbot_node.innerHTML = document.getElementById("editor_tbot").value;
+        this.meme.tbot_node.data = document.getElementById("editor_tbot").value;
     }
 
     watch_ttitle() {
-        this.meme.ttitle_node.innerHTML = document.getElementById("editor_ttitle").value;
+        this.meme.ttitle_node.data = document.getElementById("editor_ttitle").value;
     }
 
     shift_up_ttop() {

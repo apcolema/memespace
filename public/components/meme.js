@@ -147,14 +147,17 @@ class Meme {
             
             var share = document.createElement("img");
             share.setAttribute("type", "png");
+            share.setAttribute("src", "assets/img/share.png");
+            share.setAttribute("alt", "share");
             var edit = document.createElement("img");
             edit.setAttribute("type", "png");
+            edit.setAttribute("src", "assets/img/edit.png");
+            edit.setAttribute("alt", "edit");
             var del = document.createElement("img");
             del.setAttribute("type", "png");
-            var test = document.createElement("span");
-            test.appendChild(document.createTextNode("kitties"));
+            del.setAttribute("src", "assets/img/delete.png");
+            del.setAttribute("alt", "del");
 
-            overlay_container.appendChild(test);
             overlay_container.appendChild(share);
             overlay_container.appendChild(edit);
             overlay_container.appendChild(del);

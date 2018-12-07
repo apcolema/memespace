@@ -125,13 +125,12 @@
                 <input id="save_meme" type="button" value="Save" onclick="dashboard.saveMemeEdit()"/>
                 <input id="cancel_meme" type="button" value="Cancel" onclick="dashboard.toggleEditor()"/>
             </div>
-            <div id="sidebar" onclick="dashboard.toggleSidebar()" onmouseover="dashboard.growProfileIcon()"
-                onmouseout="dashboard.shrinkProfileIcon()">
+            <div id="sidebar" onmouseover="dashboard.growProfileIcon()" onmouseout="dashboard.shrinkProfileIcon()">
                 <input id="logout_button" type="button" value="Logout" onclick="dashboard.logout()">
                 <input id="change_password_button" type="button" value="Change Password" onclick="dashboard.showPasswordChange()">
                 <input id="cancel_button" type="button" value="Cancel" onclick="dashboard.hidePasswordChange()">
                 <input id="password_input" type="password" name="password" placeholder="Password">
-                <input id="verify_input" type="password" name="verify" placeholder="Verify" oninput="dashboard.verify()">
+                <input id="verify_input" type="password" name="verify" placeholder="Verify" oninput="dashboard.verifyPasswordChange()">
             </div>
             <div id="sidebar_cover" onclick="dashboard.toggleSidebar()" onmouseover="dashboard.growProfileIcon()"
                 onmouseout="dashboard.shrinkProfileIcon()"></div>

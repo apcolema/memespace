@@ -56,7 +56,7 @@ class Dashboard {
         }
         this.sidebar.toggleSidebar(); 
     }
-    logout() { this.user.logout(); }
+    logout() { this.sidebar.logout(); }
     showPasswordChange() { this.sidebar.showPasswordChange(); }
     hidePasswordChange() { this.sidebar.hidePasswordChange(); }
     verifyPasswordChange() { this.sidebar.verifyPasswordChange(); }

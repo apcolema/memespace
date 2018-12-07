@@ -13,11 +13,11 @@ class Sidebar {
             if (verify.value == "" || pass.value != verify.value) {
                 verify.value = "";
                 pass.value = "";
-                alert("Password and Verification do not macth.");
+                alert("Password and verification do not macth, or are empty.");
                 return;
             }
 
-            this.user.changePassword(pass.value);
+            user.changePassword(pass.value);
             return;
         }
     }
@@ -35,11 +35,10 @@ class Sidebar {
     logout() {
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
-            alert("Successfully signed out");
             window.location.replace("index.html");
         }, function(error) {
             // An error happened.
-            alert("Unsuccessfully signed out");
+            alert("Unsuccessfully signed out.");
         });
     }
 
@@ -59,7 +58,7 @@ class Sidebar {
 
         document.getElementById("change_password_button").value = "Save";
         document.getElementById("change_password_button").setAttribute("style", "width: 50%;");
-        document.getElementById("change_password_button").addEventListener('click', this._changePassListener, false);
+        document.getElementById("change_password_button").addEventListener('click', this._changePassListener, true);
 
         document.getElementById("cancel_button").setAttribute("style", "display: inline;");
     }
@@ -70,7 +69,7 @@ class Sidebar {
 
         document.getElementById("change_password_button").value = "Change Password";
         document.getElementById("change_password_button").setAttribute("style", "width: 100%;");
-        document.getElementById("change_password_button").removeEventListener('click', this._changePassListener, false);
+        document.getElementById("change_password_button").removeEventListener('click', this._changePassListener, true);
 
         document.getElementById("cancel_button").setAttribute("style", "display: none;");
     }

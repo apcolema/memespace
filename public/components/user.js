@@ -21,7 +21,7 @@ class User {
 
     changePassword(newPass) {
         var tmp_user = firebase.auth().currentUser;
-        tmp_user.updatePassword(newPassword).then(function() {
+        tmp_user.updatePassword(newPass).then(function() {
             // Update successful.
             alert("Password was successfully changed.");
         }).catch(function(error) {
