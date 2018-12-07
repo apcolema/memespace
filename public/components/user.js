@@ -20,7 +20,15 @@ class User {
     }
 
     changePassword(newPass) {
-        //Todo access firebase to make the new password the password
+        var tmp_user = firebase.auth().currentUser;
+        tmp_user.updatePassword(newPassword).then(function() {
+            // Update successful.
+            alert("Password was successfully changed.");
+        }).catch(function(error) {
+            // An error happened.
+            alert("Password could not be changed at this time.");
+        });
+          
         return;
     }
 }

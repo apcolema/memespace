@@ -7,6 +7,19 @@ class Sidebar {
         this.load(); 
         this.user = user;
         this.toggle = false;
+        this._changePassListener = function() {
+            var pass = document.getElementById("password_input");
+            var verify = document.getElementById("verify_input");
+            if (verify.value == "" || pass.value != verify.value) {
+                verify.value = "";
+                pass.value = "";
+                alert("Password and Verification do not macth.");
+                return;
+            }
+
+            this.user.changePassword(pass.value);
+            return;
+        }
     }
 
     toggleSidebar() {
@@ -17,6 +30,17 @@ class Sidebar {
             this._show();
             this.toggle = true;
         }
+    }
+
+    logout() {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            alert("Successfully signed out");
+            window.location.replace("index.html");
+        }, function(error) {
+            // An error happened.
+            alert("Unsuccessfully signed out");
+        });
     }
 
     _show() {
@@ -34,7 +58,8 @@ class Sidebar {
         document.getElementById("verify_input").setAttribute("style", "display: inline;");
 
         document.getElementById("change_password_button").value = "Save";
-        document.getElementById("change_password_button").setAttribute("style", "width: 50%;");;
+        document.getElementById("change_password_button").setAttribute("style", "width: 50%;");
+        document.getElementById("change_password_button").addEventListener('click', this._changePassListener, false);
 
         document.getElementById("cancel_button").setAttribute("style", "display: inline;");
     }
@@ -45,6 +70,7 @@ class Sidebar {
 
         document.getElementById("change_password_button").value = "Change Password";
         document.getElementById("change_password_button").setAttribute("style", "width: 100%;");
+        document.getElementById("change_password_button").removeEventListener('click', this._changePassListener, false);
 
         document.getElementById("cancel_button").setAttribute("style", "display: none;");
     }
