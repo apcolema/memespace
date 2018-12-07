@@ -20,7 +20,7 @@ class Dashboard {
         this.header = new Header();
 
         //Create new add screen
-        this.editor = new Editor(this.memeList);
+        this.editor = new Editor(this.memeList, this.user);
 
     }
 
@@ -45,6 +45,7 @@ class Dashboard {
 
             //Make a new central MemeList
             this.memeList = new MemeList(userMemes);
+            this.editor.memeList = this.memeList;
 
         }, this);
     }
@@ -66,7 +67,7 @@ class Dashboard {
         }
         this.editor.toggleEditor();
     }
-    editorLoadWithMeme(meme) { this.editorLoadWithMeme(meme); }
+    editorLoadWithMeme(meme) { this.editor.loadWithMeme(meme); }
     saveMemeEdit() { this.editor.saveEdit(); }
     uploadMeme() { this.editor.uploadMeme(); }
     editorWatchTtop() { this.editor.watch_ttop(); }

@@ -4,7 +4,7 @@ class Meme {
     }
 
     constructor(img_path="", title="title", ttop="What is my purpose", tbot="To be a sample meme",
-        ttop_y=0, tbot_y=0, editable=false, timestamp=0, uuid) {
+        ttop_y=0, tbot_y=0, editable=false, timestamp=0, uuid, push=true) {
 
         this.load();
 
@@ -22,6 +22,10 @@ class Meme {
         this.editable = editable;
         this.uuid = uuid;
 
+        this.ttop_node = null;
+        this.tbot_node = null;
+        this.ttitle_node = null;
+
         //If we know a timestamp then load the meme from the DB
         if(timestamp != 0) {
             console.log("Previously made meme");
@@ -35,7 +39,9 @@ class Meme {
         this.timestamp = (new Date().valueOf());
 
         //Push new meme
-        this._push_to_database();
+        if(push) {
+            this.push_to_database();
+        }
 
         //Render the new meme html structure
         this.meme = this.render_meme();
@@ -62,7 +68,7 @@ class Meme {
         }, this);
     }
 
-    _push_to_database() {
+    push_to_database() {
         firebase.database().ref('/users/' + this.uuid + "/" + this.timestamp).set({
             img_path: this.img_path,
             title: this.title,
@@ -120,18 +126,21 @@ class Meme {
         image_frame.setAttribute("class", "image_frame");
 
         var text_top = document.createElement("span");
-        text_top.appendChild(document.createTextNode(this.ttop));
+        this.ttop_node = document.createTextNode(this.ttop);
+        text_top.appendChild(this.ttop_node);
         text_top.setAttribute("class", "ttop");
 
         var text_bottom = document.createElement("span");
-        text_bottom.appendChild(document.createTextNode(this.tbot));
+        this.tbot_node = document.createTextNode(this.tbot);
+        text_bottom.appendChild(this.tbot_node);
         text_bottom.setAttribute("class", "tbot");
+
+        var image_title = document.createElement("p");
+        this.ttitle_node = document.createTextNode(this.title);
+        image_title.appendChild(this.ttitle_node);
 
         //If it is a meme that can be editted
         if(this.editable) {
-
-            var image_title = document.createElement("p");
-            image_title.appendChild(document.createTextNode(this.title));
             
             var overlay_container = document.createElement("div");
             overlay_container.setAttribute("class", "overlay_container");
@@ -150,7 +159,6 @@ class Meme {
             overlay_container.appendChild(edit);
             overlay_container.appendChild(del);
             
-
         }
 
         //Form the structure
@@ -158,11 +166,7 @@ class Meme {
         image_frame.appendChild(text_bottom);
 
         container.appendChild(image_frame);
-        
-
-        if(this.editable) {
-            container.appendChild(image_title);
-        }
+        container.appendChild(image_title);
         
         table_data_container.appendChild(container);
         
