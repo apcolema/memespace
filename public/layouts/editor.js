@@ -24,4 +24,12 @@ class Editor {
 
         //Todo get rid of ttop, title reset to blank, close editor, etc.
     }
+    
+    showEditModal(){
+        
+    }
+    
+    hideEditModal(){
+        
+    }
 }

@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="styling/sidebar.css"/>
         <link rel="stylesheet" type="text/css" href="styling/header.css"/>
         <link rel="stylesheet" type="text/css" href="styling/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="styling/editor.css"/>
 
         <title>MemeSpace</title>
 
@@ -65,6 +66,10 @@
                 width: 30%;
                 height: 50%;
             }
+            main {
+                padding:0;
+            }
+            }
 
         </style>
 
@@ -112,9 +117,34 @@
             </div>
             <div id="sidebar_cover" onmouseover="dashboard.showSidebar(); dashboard.growProfileIcon();"
                 onmouseout="dashboard.hideSidebar(); dashboard.shrinkProfileIcon();"></div>
+            <div id="add_edit_modal">
+                <div id="add_edit_container">
+                    <form>
+                        <!-- add mouseover for upload photo -->
+                        <input id="title_input" type="text"/>
+                        <div id="caption_button_container">
+                        <input id="up_arrow_top_button" type="button" value="˄"/>
+                        <input id="text_top_input" type="text"/>
+                        <input id="down_arrow_top_button" type="button" value="˅"/>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div id="caption_button_container">
+                        <input id="up_arrow_bottom_button" type="button" />
+                        <input id="text_bottom_input" type="text"/>
+                        <input id="down_arrow_bottom_button" type="button" />
+                        </div>
+                        <input id="save_button" type="button" value="Save" onclick="saveEdit()" />
+                        <input id="cancel_button" type="button" value="Cancel" onclick="cancelEdit()" />
+                    </form>
+                </div>
+            </div>
+            
         </main>
         <footer>
             <input type="text" name="search_bar" placeholder="Search">
         </footer>
+        
     </body>
 </html>

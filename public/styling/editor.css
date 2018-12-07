@@ -1,0 +1,60 @@
+#add_edit_modal {
+    display: block;
+    top: 10vh;
+    height: 90vh;
+    width: 100vw;
+    position: absolute;
+    background: rgba(0, 0, 0, .5);
+    z-index:3;
+    margin:0;
+}
+
+#add_edit_container {
+    margin: 0 auto auto auto;
+    width: 50vw;
+    height: 50vh;
+    background: white;
+    padding: 25px;
+}
+
+#title_input {
+    display: block;
+    width: 80%;
+    margin: auto;
+    font-size: 2.5em;
+    margin-bottom: 4vh;
+}
+
+#caption_button_container {
+    width:100%;
+    text-align:center;
+}
+
+#up_arrow_top_button {
+    font-size:2em;
+    display:inline-block;
+}
+#up_arrow_bottom_button {
+    width: 20px;
+    height: 20px;
+    display:inline-block;
+}
+#down_arrow_top_button {
+    font-size:2em;
+    display:inline-block;
+}
+#down_arrow_bottom_button {
+    width: 2em;
+    height: 2em;
+    display:inline-block;
+}
+#text_bottom_input {
+    display:inline-block;
+    font-size: 2em;
+    width: 60%;
+}
+#text_top_input{
+    display:inline-block;
+    font-size:2em;
+    width: 60%;
+}
