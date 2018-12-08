@@ -152,6 +152,11 @@ class Meme {
             var overlay_container = document.createElement("div");
             overlay_container.setAttribute("class", "overlay_container");
             
+            var email = document.createElement("img");
+            email.setAttribute("type", "png");
+            email.setAttribute("src", "assets/img/email.png");
+            email.setAttribute("alt", "email");
+            this.my_email = email;
             var share = document.createElement("img");
             share.setAttribute("type", "png");
             share.setAttribute("src", "assets/img/share.png");
@@ -168,6 +173,7 @@ class Meme {
             del.setAttribute("alt", "del");
             this.my_del = del;
 
+            overlay_container.appendChild(email);
             overlay_container.appendChild(share);
             overlay_container.appendChild(edit);
             overlay_container.appendChild(del);

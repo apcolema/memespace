@@ -40,6 +40,21 @@ class MemeList {
             this.userMemes.push(meme);
         }
  
+        meme.my_email.onclick = () => {
+            domtoimage.toBlob(meme.root)
+                .then(function (blob) {
+                    var a = document.createElement('a');
+                    var a_img = document.createElement('img');
+                    a_img.setAttribute("src", `${URL.createObjectURL(blob)}`);
+                    a_img.setAttribute("alt", "My Meme");
+                    a.appendChild(a_img);
+                    a.setAttribute("rel", "noopener");
+                    a.setAttribute("href", "mailto:?subject=Memes!");
+                    setTimeout(function () { URL.revokeObjectURL(a.href) }, 4E4);
+                    setTimeout(function () { click(a) }, 0);
+                    window.saveAs(blob, `${meme.title}_memespace.png`);
+            }); 
+        };
         meme.my_edit.onclick = ()=>{
             dashboard.toggleEditor();
             dashboard.editorLoadWithMeme(this.userMemes[this.userMemes.indexOf(meme)]);
