@@ -10,14 +10,18 @@ class Sidebar {
         this._changePassListener = function() {
             var pass = document.getElementById("password_input");
             var verify = document.getElementById("verify_input");
-            if (verify.value == "" || pass.value != verify.value) {
+
+            var pass_val_clean = DOMPurify.sanitize(pass.value);
+            var verify_val_clean = DOMPurify.sanitize(verify.value);
+
+            if (verify_val_clean == "" || pass_val_clean != verify_val_clean) {
                 verify.value = "";
                 pass.value = "";
                 alert("Password and verification do not macth, or are empty.");
                 return;
             }
 
-            user.changePassword(pass.value);
+            user.changePassword(pass_val_clean);
             return;
         }
     }

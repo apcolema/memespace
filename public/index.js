@@ -34,9 +34,9 @@ function setup_create_account() {
 }
 
 function create_account() {
-    var email = document.getElementById('email_input').value;
-    var password = document.getElementById('password_input').value;
-    var verify = document.getElementById('verify_input').value;
+    var email = DOMPurify.sanitize(document.getElementById('email_input').value);
+    var password = DOMPurify.sanitize(document.getElementById('password_input').value);
+    var verify = DOMPurify.sanitize(document.getElementById('verify_input').value);
 
     if (verify.value != password.value) {
         alert('Password verification failed.');
@@ -105,8 +105,8 @@ function login() {
         firebase.auth().signOut();
     }
 
-    var email = document.getElementById('email_input').value;
-    var password = document.getElementById('password_input').value;
+    var email = DOMPurify.sanitize(document.getElementById('email_input').value);
+    var password = DOMPurify.sanitize(document.getElementById('password_input').value);
 
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         var errorCode = error.code;

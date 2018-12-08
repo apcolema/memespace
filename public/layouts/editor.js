@@ -113,17 +113,17 @@ class Editor {
     }
 
     watch_ttop() {
-        this.meme.ttop_node.data = document.getElementById("editor_ttop").value;
+        this.meme.ttop_node.data = DOMPurify.sanitize(document.getElementById("editor_ttop").value);
         this.meme.ttop = this.meme.ttop_node.data;
     }
 
     watch_tbot() {
-        this.meme.tbot_node.data = document.getElementById("editor_tbot").value;
+        this.meme.tbot_node.data = DOMPurify.sanitize(document.getElementById("editor_tbot").value);
         this.meme.tbot = this.meme.tbot_node.data;
     }
 
     watch_ttitle() {
-        this.meme.ttitle_node.data = document.getElementById("editor_ttitle").value;
+        this.meme.ttitle_node.data = DOMPurify.sanitize(document.getElementById("editor_ttitle").value);
         this.meme.title = this.meme.ttitle_node.data;
     }
 

@@ -22,6 +22,7 @@
         <!-- initialize the SDK after all desired features are loaded -->
         <script src="/__/firebase/init.js"></script>
         
+        <script type="text/javascript" src="purify.js"></script>
         <script src="dom-to-image.min.js"></script>
         <script src="FileSaver.js"></script>
 
@@ -78,6 +79,9 @@
         <script>
 
             //Create global Dashboard
+            //Dashboard goes through some init steps
+            //Tries to only download the imgs you need to see from the
+            //DB, not necessarily everything thats there for the user
             const dashboard = new Dashboard();
 
         </script>

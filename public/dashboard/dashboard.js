@@ -24,6 +24,9 @@ class Dashboard {
 
     }
 
+    //Tries to employ the technique or idea Professor taught in lecture to 
+    //only download the memes/content/imgs necessary at the current time to 
+    //avoid just downloading all of the content to start
     _fetchMemes(uuid) {
         console.log("Fetching memes for user");
         firebase.database().ref('/users/' + uuid).once('value', function (snapshot) {
