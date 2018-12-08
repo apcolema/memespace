@@ -55,7 +55,7 @@ class Dashboard {
         if (this.editor.toggle) {
             this.editor.toggleEditor();
         }
-        this.sidebar.toggleSidebar(); 
+        this.sidebar.toggleSidebar();
     }
     logout() { this.sidebar.logout(); }
     showPasswordChange() { this.sidebar.showPasswordChange(); }
@@ -68,10 +68,17 @@ class Dashboard {
             this.sidebar.toggleSidebar();
         }
         this.editor.toggleEditor();
+        this.memeList._reloadList();
+    }
+    cancelEdit() {
+        this.editor.cancelEdit();
+        this.memeList._reloadList();
     }
     editorLoadWithMeme(meme) { this.editor.loadWithMeme(meme); }
-    saveMemeEdit() { this.editor.saveEdit(); }
-    uploadMeme(event) { this.editor.uploadMeme(event); }
+    saveMemeEdit() { this.editor.saveEdit(); 
+                     this.memeList._reloadList();}
+    uploadMeme(event) { this.editor.uploadMeme(event); 
+                     this.memeList._reloadList() }
     editorWatchTtop() { this.editor.watch_ttop(); }
     editorWatchTbot() { this.editor.watch_tbot(); }
     editorWatchTtitle() { this.editor.watch_ttitle(); }

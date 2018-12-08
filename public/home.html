@@ -126,7 +126,7 @@
 
                 <input id="upload_meme" type="file" accept="image/png, image/jpeg" onchange="dashboard.uploadMeme(event)"/>
                 <input id="save_meme" type="button" value="Save" onclick="dashboard.saveMemeEdit()"/>
-                <input id="cancel_meme" type="button" value="Cancel" onclick="dashboard.toggleEditor()"/>
+                <input id="cancel_meme" type="button" value="Cancel" onclick="dashboard.cancelEdit()"/>
             </div>
             <div id="sidebar" onmouseover="dashboard.growProfileIcon()" onmouseout="dashboard.shrinkProfileIcon()">
                 <input id="logout_button" type="button" value="Logout" onclick="dashboard.logout()">

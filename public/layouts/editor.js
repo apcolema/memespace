@@ -73,6 +73,9 @@ class Editor {
 
         this._hide();
     }
+    cancelEdit() {
+        this._hide();
+    }
 
     uploadMeme(event) {
         this.meme.img_path = URL.createObjectURL(event.target.files[0]);
