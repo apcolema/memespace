@@ -162,6 +162,11 @@ class Meme {
             share.setAttribute("src", "assets/img/share.png");
             share.setAttribute("alt", "share");
             this.my_share = share;
+            var clip = document.createElement("img");
+            clip.setAttribute("type", "png");
+            clip.setAttribute("src", "assets/img/clipboard.png");
+            clip.setAttribute("alt", "share");
+            this.my_clip = clip;
             var edit = document.createElement("img");
             edit.setAttribute("type", "png");
             edit.setAttribute("src", "assets/img/edit.png");
@@ -175,6 +180,7 @@ class Meme {
 
             overlay_container.appendChild(email);
             overlay_container.appendChild(share);
+            overlay_container.appendChild(clip);
             overlay_container.appendChild(edit);
             overlay_container.appendChild(del);
             

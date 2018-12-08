@@ -55,6 +55,17 @@ class MemeList {
                     window.saveAs(blob, `${meme.title}_memespace.png`);
             }); 
         };
+        meme.my_clip.onclick = ()=>{
+            domtoimage.toBlob(meme.root)
+            .then(function (blob) {
+                var text_el = document.createElement('textarea');
+                text_el.value = `${URL.createObjectURL(blob)}`;
+                document.body.appendChild(text_el);
+                text_el.select();
+                document.execCommand('copy');
+                document.body.removeChild(text_el);
+            }); 
+        };
         meme.my_edit.onclick = ()=>{
             dashboard.toggleEditor();
             dashboard.editorLoadWithMeme(this.userMemes[this.userMemes.indexOf(meme)]);
