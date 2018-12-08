@@ -93,19 +93,35 @@ class Editor {
     }
 
     shift_up_ttop() {
-
+        this.meme.ttop_y = this.meme.ttop_y - 5;
+        if (this.meme.ttop_y < 0) {
+            this.meme.ttop_y = 0;
+        }
+        this.meme.ttop_parent.style.top = `${this.meme.ttop_y}px`;
     }
 
     shift_up_tbot() {
-        
+        this.meme.tbot_y = this.meme.tbot_y + 5;
+        if (this.meme.tbot_y > 20) {
+            this.meme.tbot_y = 20;
+        }
+        this.meme.tbot_parent.style.top = `calc(100% - 2*${45+this.meme.ttop_y}px)`;
     }
 
     shift_down_ttop() {
-
+        this.meme.ttop_y = this.meme.ttop_y + 5;
+        if (this.meme.ttop_y > 20) {
+            this.meme.ttop_y = 20;
+        }
+        this.meme.ttop_parent.style.top = `${this.meme.ttop_y}px`;
     }
 
     shift_down_tbot() {
-        
+        this.meme.tbot_y = this.meme.tbot_y - 5;
+        if (this.meme.tbot_y < 0) {
+            this.meme.tbot_y = 0;
+        }
+        this.meme.tbot_parent.style.top = `calc(100% - 2*${45+this.meme.ttop_y}px)`;
     }
 
 }
