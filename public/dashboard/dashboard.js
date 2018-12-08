@@ -79,4 +79,14 @@ class Dashboard {
     editorShiftDownTtop() { this.editor.shift_down_ttop(); }
     editorShiftDownTbot() { this.editor.shift_down_tbot(); }
     removeMeme(meme) { this.memeList.removeFromTable(meme); }
-}
+    downloadMeme(meme_download) {
+        domtoimage.toJpeg(meme_download, { quality: 0.95 })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'meme.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
+    
+  }
+    }

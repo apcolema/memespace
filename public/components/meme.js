@@ -155,6 +155,7 @@ class Meme {
             share.setAttribute("type", "png");
             share.setAttribute("src", "assets/img/share.png");
             share.setAttribute("alt", "share");
+            share.setAttribute("onclick", `dashboard.downloadMeme(${container});`);
             var edit = document.createElement("img");
             edit.setAttribute("type", "png");
             edit.setAttribute("src", "assets/img/edit.png");
