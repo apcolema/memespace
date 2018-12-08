@@ -27,6 +27,7 @@ class Editor {
 
         if (meme != null) {
             this.meme = meme;
+            this.meme.editable = false;
             this.new_meme = false;
         } else {
             this.meme = new Meme("","Title","","",0,0,false,0,this.uuid,false);
