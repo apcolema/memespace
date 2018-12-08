@@ -71,3 +71,10 @@
     display: block;
     background: rgba(0, 0, 0, .5);
 }
+
+.overlay_container img {
+    width: 30px;
+    height 30px;
+    margin: 5px;
+    background:white;
+}
