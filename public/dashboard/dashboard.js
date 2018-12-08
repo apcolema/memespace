@@ -68,7 +68,6 @@ class Dashboard {
             this.sidebar.toggleSidebar();
         }
         this.editor.toggleEditor();
-        this.memeList._reloadList();
     }
     cancelEdit() {
         this.editor.cancelEdit();
@@ -86,4 +85,7 @@ class Dashboard {
     editorShiftUpTbot() { this.editor.shift_up_tbot(); }
     editorShiftDownTtop() { this.editor.shift_down_ttop(); }
     editorShiftDownTbot() { this.editor.shift_down_tbot(); }
+    reloadList(){ 
+        this.memeList._reloadList();
+    }
 }

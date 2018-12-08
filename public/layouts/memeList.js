@@ -61,13 +61,36 @@ class MemeList {
             this.userMemes.splice(idx, 1);
         }
 
-        this._reloadList();
+        this._reloadList("");
     }
 
     _reloadList() {
         this.table.innerHTML = "";
-        this.userMemes.forEach((el) => {
-            this.appendToTable(el);
-        });
+        var text = document.getElementById("search_bar").value;
+        if (text != null && text != ""){
+            this.filterForSearch(text, this.userMemes).forEach((el) => {
+                this.appendToTable(el);
+            });
+        } else {
+            this.userMemes.forEach((el) => {
+                this.appendToTable(el);
+            });
+        }
+    }
+    
+    filterForSearch(text, list) {
+        var display_memes = [];
+        if (text != null && text != ""){
+            for(var i = 0; i < list.length; i++){
+                var el = list[i];
+                var yes = el.title.includes(text) || el.ttop.includes(text) || el.tbot.includes(text);
+                if(yes){
+                    display_memes.push(el);
+                }
+            }
+            return display_memes;
+        } else {
+            return list;
+        }
     }
 }
