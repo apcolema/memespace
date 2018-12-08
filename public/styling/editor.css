@@ -109,6 +109,7 @@
     font-weight: bold; 
 }
 
+#editor input[type=file],
 #editor input[type=button] {
     position: absolute;
     margin: auto;
@@ -141,6 +142,7 @@
     height: 34%;
 }
 
+#editor input[type=file]:hover,
 #editor input[type=button]:hover {
     border-left: 20px solid orange;
 }

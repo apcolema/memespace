@@ -36,9 +36,10 @@ class Dashboard {
 
             //Make userMemes
             var userMemes = [];
+            var md;
             for (var m in userMemesRaw) {
-                console.log(m);
-                userMemes.push(new Meme("", "title", "What is my purpose", "To be a sample meme", 0, 0, true, m, uuid));
+                md = userMemesRaw[m];
+                userMemes.push(new Meme(md.im_path, md.title, md.ttop, md.tbot, md.ttop_y, md.tbot_y, md.editable, m, uuid, false));
             }
             console.log("userMemes");
             console.log(userMemes);
@@ -70,7 +71,7 @@ class Dashboard {
     }
     editorLoadWithMeme(meme) { this.editor.loadWithMeme(meme); }
     saveMemeEdit() { this.editor.saveEdit(); }
-    uploadMeme() { this.editor.uploadMeme(); }
+    uploadMeme(event) { this.editor.uploadMeme(event); }
     editorWatchTtop() { this.editor.watch_ttop(); }
     editorWatchTbot() { this.editor.watch_tbot(); }
     editorWatchTtitle() { this.editor.watch_ttitle(); }
@@ -78,15 +79,4 @@ class Dashboard {
     editorShiftUpTbot() { this.editor.shift_up_tbot(); }
     editorShiftDownTtop() { this.editor.shift_down_ttop(); }
     editorShiftDownTbot() { this.editor.shift_down_tbot(); }
-    removeMeme(meme) { this.memeList.removeFromTable(meme); }
-    downloadMeme(meme_download) {
-        domtoimage.toJpeg(meme_download, { quality: 0.95 })
-    .then(function (dataUrl) {
-        var link = document.createElement('a');
-        link.download = 'meme.jpeg';
-        link.href = dataUrl;
-        link.click();
-    });
-    
-  }
-    }
+}

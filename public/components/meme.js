@@ -33,7 +33,7 @@ class Meme {
         if(timestamp != 0) {
             console.log("Previously made meme");
             this.timestamp = timestamp;
-            this._load_from_database();
+            //this._load_from_database();
             this.meme = this.render_meme();
             return;
         }
@@ -51,7 +51,7 @@ class Meme {
     }
 
     _load_from_database() {
-        var ret = firebase.database().ref('/users/' + this.uuid + "/" + this.timestamp).on('value', function(snapshot) {
+        firebase.database().ref('/users/' + this.uuid + "/" + this.timestamp).on('value', function(snapshot) {
 
             var ret = snapshot.val();
 
@@ -71,9 +71,9 @@ class Meme {
         }, this);
     }
 
-    push_to_database() {
+    push_to_database(ip) {
         firebase.database().ref('/users/' + this.uuid + "/" + this.timestamp).set({
-            img_path: this.img_path,
+            img_path: ip,
             title: this.title,
             ttop: this.ttop,
             tbot: this.tbot,
@@ -85,7 +85,7 @@ class Meme {
 
     update_in_database() {
         var updates = {};
-        uodates['/users/' + this.uuid + "/" + this.timestamp] = {
+        updates['/users/' + this.uuid + "/" + this.timestamp] = {
             img_path: this.img_path,
             title: this.title,
             ttop: this.ttop,
@@ -127,6 +127,7 @@ class Meme {
 
         var image_frame = document.createElement("div");
         image_frame.setAttribute("class", "image_frame");
+        this.root = container;
 
         var text_top = document.createElement("span");
         this.ttop_parent = text_top;
@@ -155,15 +156,17 @@ class Meme {
             share.setAttribute("type", "png");
             share.setAttribute("src", "assets/img/share.png");
             share.setAttribute("alt", "share");
-            share.setAttribute("onclick", `dashboard.downloadMeme(${container});`);
+            this.my_share = share;
             var edit = document.createElement("img");
             edit.setAttribute("type", "png");
             edit.setAttribute("src", "assets/img/edit.png");
             edit.setAttribute("alt", "edit");
+            this.my_edit = edit;
             var del = document.createElement("img");
             del.setAttribute("type", "png");
             del.setAttribute("src", "assets/img/delete.png");
             del.setAttribute("alt", "del");
+            this.my_del = del;
 
             overlay_container.appendChild(share);
             overlay_container.appendChild(edit);

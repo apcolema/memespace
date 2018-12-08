@@ -26,6 +26,7 @@ class MemeList {
 
     appendToTable(meme) {
         console.log("Appending a child meme to the table");
+
         if( this.table.childNodes.length == 0 || this._isRowFull(this.table.lastChild) ) {
             var row = document.createElement("tr");
             this.table.appendChild(row);
@@ -38,18 +39,35 @@ class MemeList {
         if( this.userMemes.indexOf(meme) == -1 ) {
             this.userMemes.push(meme);
         }
+ 
+        meme.my_edit.onclick = ()=>{
+            dashboard.toggleEditor();
+            dashboard.editorLoadWithMeme(this.userMemes[this.userMemes.indexOf(meme)]);
+        };
+        meme.my_del.onclick = ()=>{
+            this.userMemes[this.userMemes.indexOf(meme)].delete_from_database();
+            this._removeFromList(this.userMemes.indexOf(meme));
+        };
+        meme.my_share.onclick = ()=>{ 
+            domtoimage.toBlob(meme.root)
+                .then(function (blob) {
+                window.saveAs(blob, `${meme.title}_memespace.png`);
+            }); 
+        }
     }
 
-    removeFromTable(meme) {
-        //First delete the meme from the list
-        this.userMemes.splice( this.userMemes.indexOf(meme), 1 );
+    _removeFromList(idx) {
+        if( idx != -1 ) {
+            this.userMemes.splice(idx, 1);
+        }
 
-        this.userMemes.childNodes.forEach((c) => {
-            this.table.removeChild(c);
-        });
+        this._reloadList();
+    }
 
+    _reloadList() {
+        this.table.innerHTML = "";
         this.userMemes.forEach((el) => {
-            this.table.appendToTable(el);
+            this.appendToTable(el);
         });
     }
 }

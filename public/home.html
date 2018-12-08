@@ -23,6 +23,7 @@
         <script src="/__/firebase/init.js"></script>
         
         <script src="dom-to-image.min.js"></script>
+        <script src="FileSaver.js"></script>
 
         <script type="text/javascript" src="components/meme.js"></script>
         <script type="text/javascript" src="components/user.js"></script>
@@ -123,7 +124,7 @@
 
                 <input id="editor_ttitle" type="text" name="ttile" placeholder="Meme Title" oninput="dashboard.editorWatchTtitle()"/>
 
-                <input id="upload_meme" type="button" value="Upload" onclick="dashboard.uploadMeme()"/>
+                <input id="upload_meme" type="file" accept="image/png, image/jpeg" onchange="dashboard.uploadMeme(event)"/>
                 <input id="save_meme" type="button" value="Save" onclick="dashboard.saveMemeEdit()"/>
                 <input id="cancel_meme" type="button" value="Cancel" onclick="dashboard.toggleEditor()"/>
             </div>
